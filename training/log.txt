@@ -1,0 +1,1950 @@
+Sending build context to Docker daemon  217.1kB
+Step 1/9 : FROM python:3.6-alpine3.10
+ ---> 92a867c54c0f
+Step 2/9 : ENV PACKAGES="    libgcc     libstdc++     tcl     "
+ ---> Using cache
+ ---> 2d13300cb2ee
+Step 3/9 : ENV TOOLS="    py-pip     "
+ ---> Using cache
+ ---> c23fd378a407
+Step 4/9 : ENV PYTHON_PACKAGES="    flask-restful     tqdm     scipy     matplotlib     scikit-learn     pandas     nltk     "
+ ---> Using cache
+ ---> 77600913a369
+Step 5/9 : RUN apk add --no-cache --virtual build-dependencies $PACKAGES     && apk add --virtual build-runtime     build-base python3-dev openblas-dev freetype-dev pkgconfig gfortran     && ln -s /usr/include/locale.h /usr/include/xlocale.h     && apk update     && apk add make automake gcc g++ subversion python3-dev     && apk add --update $TOOLS     && pip3 install --upgrade pip setuptools     && rm -r /root/.cache     && pip3 install --no-cache-dir $PYTHON_PACKAGES
+ ---> Running in 6103c795ba07
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.10/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.10/community/x86_64/APKINDEX.tar.gz
+(1/4) Installing libgcc (8.3.0-r0)
+(2/4) Installing libstdc++ (8.3.0-r0)
+(3/4) Installing tcl (8.6.9-r0)
+(4/4) Installing build-dependencies (20200313.132731)
+Executing busybox-1.30.1-r3.trigger
+OK: 27 MiB in 38 packages
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.10/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.10/community/x86_64/APKINDEX.tar.gz
+(1/31) Installing binutils (2.32-r0)
+(2/31) Installing libmagic (5.37-r1)
+(3/31) Installing file (5.37-r1)
+(4/31) Installing gmp (6.1.2-r1)
+(5/31) Installing isl (0.18-r0)
+(6/31) Installing libgomp (8.3.0-r0)
+(7/31) Installing libatomic (8.3.0-r0)
+(8/31) Installing mpfr3 (3.1.5-r1)
+(9/31) Installing mpc1 (1.1.0-r0)
+(10/31) Installing gcc (8.3.0-r0)
+(11/31) Installing musl-dev (1.1.22-r3)
+(12/31) Installing libc-dev (0.7.1-r0)
+(13/31) Installing g++ (8.3.0-r0)
+(14/31) Installing make (4.2.1-r2)
+(15/31) Installing fortify-headers (1.1-r0)
+(16/31) Installing build-base (0.5-r1)
+(17/31) Installing pkgconf (1.6.1-r1)
+(18/31) Installing python3 (3.7.5-r1)
+(19/31) Installing python3-dev (3.7.5-r1)
+(20/31) Installing libquadmath (8.3.0-r0)
+(21/31) Installing libgfortran (8.3.0-r0)
+(22/31) Installing gfortran (8.3.0-r0)
+(23/31) Installing openblas-ilp64 (0.3.6-r0)
+(24/31) Installing openblas (0.3.6-r0)
+(25/31) Installing openblas-dev (0.3.6-r0)
+(26/31) Installing libpng (1.6.37-r1)
+(27/31) Installing freetype (2.10.0-r0)
+(28/31) Installing zlib-dev (1.2.11-r1)
+(29/31) Installing libpng-dev (1.6.37-r1)
+(30/31) Installing freetype-dev (2.10.0-r0)
+(31/31) Installing build-runtime (20200313.132736)
+Executing busybox-1.30.1-r3.trigger
+OK: 467 MiB in 69 packages
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.10/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.10/community/x86_64/APKINDEX.tar.gz
+v3.10.4-33-gba6aa5f827 [http://dl-cdn.alpinelinux.org/alpine/v3.10/main]
+v3.10.4-30-ge2e1be2867 [http://dl-cdn.alpinelinux.org/alpine/v3.10/community]
+OK: 10349 distinct packages available
+(1/11) Installing perl (5.28.2-r1)
+(2/11) Installing automake (1.16.1-r0)
+(3/11) Installing libuuid (2.33.2-r0)
+(4/11) Installing apr (1.6.5-r0)
+(5/11) Installing apr-util (1.6.1-r6)
+(6/11) Installing db (5.3.28-r1)
+(7/11) Installing lz4-libs (1.9.1-r0)
+(8/11) Installing libsasl (2.1.27-r4)
+(9/11) Installing serf (1.3.9-r5)
+(10/11) Installing subversion-libs (1.12.2-r0)
+(11/11) Installing subversion (1.12.2-r0)
+Executing subversion-1.12.2-r0.pre-install
+Executing busybox-1.30.1-r3.trigger
+OK: 514 MiB in 80 packages
+(1/4) Installing python2 (2.7.16-r2)
+(2/4) Installing py-setuptools (40.8.0-r1)
+(3/4) Installing py3-setuptools (40.8.0-r1)
+(4/4) Installing py2-pip (18.1-r0)
+Executing busybox-1.30.1-r3.trigger
+OK: 567 MiB in 84 packages
+Requirement already up-to-date: pip in /usr/local/lib/python3.6/site-packages (20.0.2)
+Collecting setuptools
+  Downloading setuptools-46.0.0-py3-none-any.whl (582 kB)
+Installing collected packages: setuptools
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 45.1.0
+    Uninstalling setuptools-45.1.0:
+      Successfully uninstalled setuptools-45.1.0
+Successfully installed setuptools-46.0.0
+Collecting flask-restful
+  Downloading Flask_RESTful-0.3.8-py2.py3-none-any.whl (25 kB)
+Collecting tqdm
+  Downloading tqdm-4.43.0-py2.py3-none-any.whl (59 kB)
+Collecting scipy
+  Downloading scipy-1.4.1.tar.gz (24.6 MB)
+  Installing build dependencies: started
+  Installing build dependencies: still running...
+  Installing build dependencies: still running...
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+[91mWARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='pypi.org', port=443): Read timed out. (read timeout=15)",)': /simple/matplotlib/
+[0mCollecting matplotlib
+[91m  WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out. (read timeout=15)",)': /packages/be/06/81367951cc50695830482eacefdc8289c68770db166a4d4283e7eac22dee/matplotlib-3.2.0.tar.gz
+[0m  Downloading matplotlib-3.2.0.tar.gz (40.5 MB)
+[91mWARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='pypi.org', port=443): Read timed out. (read timeout=15)",)': /simple/scikit-learn/
+[0mCollecting scikit-learn
+[91m  WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out. (read timeout=15)",)': /packages/e4/40/8bc77d8f536be0a892b37fff19fd81f15935e24724303480f85238ec7f22/scikit-learn-0.22.2.post1.tar.gz
+[0m  Downloading scikit-learn-0.22.2.post1.tar.gz (6.9 MB)
+Collecting pandas
+  Downloading pandas-1.0.1.tar.gz (4.9 MB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: still running...
+  Getting requirements to build wheel: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+Collecting nltk
+  Downloading nltk-3.4.5.zip (1.5 MB)
+Collecting aniso8601>=0.82
+  Downloading aniso8601-8.0.0-py2.py3-none-any.whl (43 kB)
+Collecting Flask>=0.8
+  Downloading Flask-1.1.1-py2.py3-none-any.whl (94 kB)
+Collecting six>=1.3.0
+  Downloading six-1.14.0-py2.py3-none-any.whl (10 kB)
+Collecting pytz
+  Downloading pytz-2019.3-py2.py3-none-any.whl (509 kB)
+Collecting cycler>=0.10
+  Downloading cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.1.0.tar.gz (30 kB)
+Collecting numpy>=1.11
+  Downloading numpy-1.18.1.zip (5.4 MB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+    Preparing wheel metadata: started
+    Preparing wheel metadata: finished with status 'done'
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1
+  Downloading pyparsing-2.4.6-py2.py3-none-any.whl (67 kB)
+Collecting python-dateutil>=2.1
+  Downloading python_dateutil-2.8.1-py2.py3-none-any.whl (227 kB)
+Collecting joblib>=0.11
+  Downloading joblib-0.14.1-py2.py3-none-any.whl (294 kB)
+Collecting click>=5.1
+  Downloading click-7.1.1-py2.py3-none-any.whl (82 kB)
+Collecting itsdangerous>=0.24
+  Downloading itsdangerous-1.1.0-py2.py3-none-any.whl (16 kB)
+Collecting Werkzeug>=0.15
+  Downloading Werkzeug-1.0.0-py2.py3-none-any.whl (298 kB)
+Collecting Jinja2>=2.10.1
+  Downloading Jinja2-2.11.1-py2.py3-none-any.whl (126 kB)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.6/site-packages (from kiwisolver>=1.0.1->matplotlib) (46.0.0)
+Collecting MarkupSafe>=0.23
+  Downloading MarkupSafe-1.1.1.tar.gz (19 kB)
+Building wheels for collected packages: scipy, matplotlib, scikit-learn, pandas, nltk, kiwisolver, numpy, MarkupSafe
+  Building wheel for scipy (PEP 517): started
+  Building wheel for scipy (PEP 517): finished with status 'error'
+[91m  ERROR: Command errored out with exit status 1:
+   command: /usr/local/bin/python /usr/local/lib/python3.6/site-packages/pip/_vendor/pep517/_in_process.py build_wheel /tmp/tmplabfbefr
+       cwd: /tmp/pip-install-9zdxa49e/scipy
+  Complete output (1709 lines):
+  lapack_opt_info:
+  lapack_mkl_info:
+    libraries mkl_rt not found in ['/usr/local/lib', '/usr/lib', '/usr/lib/']
+    NOT AVAILABLE
+  
+  openblas_lapack_info:
+  customize UnixCCompiler
+  C compiler: gcc -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -DTHREAD_STACK_SIZE=0x100000 -fPIC
+  
+  creating /tmp/tmpbr1_l07r/tmp
+  creating /tmp/tmpbr1_l07r/tmp/tmpbr1_l07r
+  compile options: '-c'
+  gcc: /tmp/tmpbr1_l07r/source.c
+  /tmp/tmpbr1_l07r/source.c: In function 'main':
+  /tmp/tmpbr1_l07r/source.c:4:13: warning: implicit declaration of function 'zungqr_'; did you mean 'zungqr'? [-Wimplicit-function-declaration]
+               zungqr_();
+               ^~~~~~~
+               zungqr
+  gcc /tmp/tmpbr1_l07r/tmp/tmpbr1_l07r/source.o -L/usr/lib -lopenblas -o /tmp/tmpbr1_l07r/a.out
+    FOUND:
+      libraries = ['openblas', 'openblas']
+      library_dirs = ['/usr/lib']
+      language = c
+      define_macros = [('HAVE_CBLAS', None)]
+  
+    FOUND:
+      libraries = ['openblas', 'openblas']
+      library_dirs = ['/usr/lib']
+      language = c
+      define_macros = [('HAVE_CBLAS', None)]
+  
+  non-existing path in 'scipy/fft/_pocketfft': '/root/.local/include/python3.6m'
+  non-existing path in 'scipy/interpolate': 'src/multipack.h'
+  Splitting linalg.interpolative Fortran source files
+  blas_opt_info:
+  blas_mkl_info:
+    libraries mkl_rt not found in ['/usr/local/lib', '/usr/lib', '/usr/lib/']
+    NOT AVAILABLE
+  
+  blis_info:
+    libraries blis not found in ['/usr/local/lib', '/usr/lib', '/usr/lib/']
+    NOT AVAILABLE
+  
+  openblas_info:
+    FOUND:
+      libraries = ['openblas', 'openblas']
+      library_dirs = ['/usr/lib']
+      language = c
+      define_macros = [('HAVE_CBLAS', None)]
+  
+    FOUND:
+      libraries = ['openblas', 'openblas']
+      library_dirs = ['/usr/lib']
+      language = c
+      define_macros = [('HAVE_CBLAS', None)]
+  
+  [makenpz] scipy/special/tests/data/boost.npz not rebuilt
+  [makenpz] scipy/special/tests/data/gsl.npz not rebuilt
+  [makenpz] scipy/special/tests/data/local.npz not rebuilt
+  non-existing path in 'scipy/signal/windows': 'tests'
+  running bdist_wheel
+  running build
+  running config_cc
+  unifing config_cc, config, build_clib, build_ext, build commands --compiler options
+  running config_fc
+  unifing config_fc, config, build_clib, build_ext, build commands --fcompiler options
+  running build_src
+  build_src
+  building py_modules sources
+  building library "mach" sources
+  building library "quadpack" sources
+  building library "lsoda" sources
+  building library "vode" sources
+  building library "dop" sources
+  building library "fitpack" sources
+  building library "fwrappers" sources
+  building library "odrpack" sources
+  building library "minpack" sources
+  building library "rectangular_lsap" sources
+  building library "rootfind" sources
+  building library "superlu_src" sources
+  building library "arpack_scipy" sources
+  building library "sc_cephes" sources
+  building library "sc_mach" sources
+  building library "sc_amos" sources
+  building library "sc_cdf" sources
+  building library "sc_specfun" sources
+  building library "statlib" sources
+  building extension "scipy.cluster._vq" sources
+  building extension "scipy.cluster._hierarchy" sources
+  building extension "scipy.cluster._optimal_leaf_ordering" sources
+  building extension "scipy.fft._pocketfft.pypocketfft" sources
+  building extension "scipy.fftpack.convolve" sources
+  building extension "scipy.integrate._quadpack" sources
+  building extension "scipy.integrate._odepack" sources
+  building extension "scipy.integrate.vode" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/integrate/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/integrate' to include_dirs.
+  building extension "scipy.integrate.lsoda" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/integrate/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/integrate' to include_dirs.
+  building extension "scipy.integrate._dop" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/integrate/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/integrate' to include_dirs.
+  building extension "scipy.integrate._test_multivariate" sources
+  building extension "scipy.integrate._test_odeint_banded" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/integrate/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/integrate' to include_dirs.
+    adding 'build/src.linux-x86_64-3.6/scipy/integrate/_test_odeint_banded-f2pywrappers.f' to sources.
+  building extension "scipy.interpolate.interpnd" sources
+  building extension "scipy.interpolate._ppoly" sources
+  building extension "scipy.interpolate._bspl" sources
+  building extension "scipy.interpolate._fitpack" sources
+  building extension "scipy.interpolate.dfitpack" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/interpolate/src/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/interpolate/src' to include_dirs.
+    adding 'build/src.linux-x86_64-3.6/scipy/interpolate/src/dfitpack-f2pywrappers.f' to sources.
+  building extension "scipy.io._test_fortran" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/io/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/io' to include_dirs.
+  building extension "scipy.io.matlab.streams" sources
+  building extension "scipy.io.matlab.mio_utils" sources
+  building extension "scipy.io.matlab.mio5_utils" sources
+  building extension "scipy.linalg._fblas" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/linalg/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/linalg' to include_dirs.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/linalg/_fblas-f2pywrappers.f' to sources.
+  building extension "scipy.linalg._flapack" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/linalg/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/linalg' to include_dirs.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/linalg/_flapack-f2pywrappers.f' to sources.
+  building extension "scipy.linalg._flinalg" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/linalg/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/linalg' to include_dirs.
+  building extension "scipy.linalg._interpolative" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/linalg/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/linalg' to include_dirs.
+  building extension "scipy.linalg._solve_toeplitz" sources
+  building extension "scipy.linalg.cython_blas" sources
+  building extension "scipy.linalg.cython_lapack" sources
+  building extension "scipy.linalg._decomp_update" sources
+  building extension "scipy.odr.__odrpack" sources
+  building extension "scipy.optimize._minpack" sources
+  building extension "scipy.optimize._lsap_module" sources
+  building extension "scipy.optimize._zeros" sources
+  building extension "scipy.optimize._lbfgsb" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/optimize/lbfgsb_src/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/optimize/lbfgsb_src' to include_dirs.
+  building extension "scipy.optimize.moduleTNC" sources
+  building extension "scipy.optimize._cobyla" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/optimize/cobyla/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/optimize/cobyla' to include_dirs.
+  building extension "scipy.optimize.minpack2" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/optimize/minpack2/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/optimize/minpack2' to include_dirs.
+  building extension "scipy.optimize._slsqp" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/optimize/slsqp/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/optimize/slsqp' to include_dirs.
+  building extension "scipy.optimize._nnls" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/optimize/nnls/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/optimize/nnls' to include_dirs.
+  building extension "scipy.optimize._group_columns" sources
+  building extension "scipy.optimize._bglu_dense" sources
+  building extension "scipy.optimize._lsq.givens_elimination" sources
+  building extension "scipy.optimize._trlib._trlib" sources
+  building extension "scipy.optimize.cython_optimize._zeros" sources
+  building extension "scipy.signal.sigtools" sources
+  building extension "scipy.signal._spectral" sources
+  building extension "scipy.signal._max_len_seq_inner" sources
+  building extension "scipy.signal._peak_finding_utils" sources
+  building extension "scipy.signal._sosfilt" sources
+  building extension "scipy.signal._upfirdn_apply" sources
+  building extension "scipy.signal.spline" sources
+  building extension "scipy.sparse.linalg.isolve._iterative" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/sparse/linalg/isolve/iterative/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/sparse/linalg/isolve/iterative' to include_dirs.
+  building extension "scipy.sparse.linalg.dsolve._superlu" sources
+  building extension "scipy.sparse.linalg.eigen.arpack._arpack" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/sparse/linalg/eigen/arpack/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/sparse/linalg/eigen/arpack' to include_dirs.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/sparse/linalg/eigen/arpack/_arpack-f2pywrappers.f' to sources.
+  building extension "scipy.sparse.csgraph._shortest_path" sources
+  building extension "scipy.sparse.csgraph._traversal" sources
+  building extension "scipy.sparse.csgraph._min_spanning_tree" sources
+  building extension "scipy.sparse.csgraph._matching" sources
+  building extension "scipy.sparse.csgraph._flow" sources
+  building extension "scipy.sparse.csgraph._reordering" sources
+  building extension "scipy.sparse.csgraph._tools" sources
+  building extension "scipy.sparse._csparsetools" sources
+  building extension "scipy.sparse._sparsetools" sources
+  [generate_sparsetools] 'scipy/sparse/sparsetools/bsr_impl.h' already up-to-date
+  [generate_sparsetools] 'scipy/sparse/sparsetools/csr_impl.h' already up-to-date
+  [generate_sparsetools] 'scipy/sparse/sparsetools/csc_impl.h' already up-to-date
+  [generate_sparsetools] 'scipy/sparse/sparsetools/other_impl.h' already up-to-date
+  [generate_sparsetools] 'scipy/sparse/sparsetools/sparsetools_impl.h' already up-to-date
+  building extension "scipy.spatial.qhull" sources
+  building extension "scipy.spatial.ckdtree" sources
+  building extension "scipy.spatial._distance_wrap" sources
+  building extension "scipy.spatial._voronoi" sources
+  building extension "scipy.spatial._hausdorff" sources
+  building extension "scipy.special.specfun" sources
+  f2py options: ['--no-wrap-functions']
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/special/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/special' to include_dirs.
+  building extension "scipy.special._ufuncs" sources
+  building extension "scipy.special._ufuncs_cxx" sources
+  building extension "scipy.special._ellip_harm_2" sources
+  building extension "scipy.special.cython_special" sources
+  building extension "scipy.special._comb" sources
+  building extension "scipy.special._test_round" sources
+  building extension "scipy.stats.statlib" sources
+  f2py options: ['--no-wrap-functions']
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/stats/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/stats' to include_dirs.
+  building extension "scipy.stats._stats" sources
+  building extension "scipy.stats.mvn" sources
+  f2py options: []
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/stats/fortranobject.c' to sources.
+    adding 'build/src.linux-x86_64-3.6/build/src.linux-x86_64-3.6/scipy/stats' to include_dirs.
+    adding 'build/src.linux-x86_64-3.6/scipy/stats/mvn-f2pywrappers.f' to sources.
+  building extension "scipy.ndimage._nd_image" sources
+  building extension "scipy.ndimage._ni_label" sources
+  building extension "scipy.ndimage._ctest" sources
+  building extension "scipy.ndimage._ctest_oldapi" sources
+  building extension "scipy.ndimage._cytest" sources
+  building extension "scipy._lib._ccallback_c" sources
+  building extension "scipy._lib._test_ccallback" sources
+  building extension "scipy._lib._fpumode" sources
+  building extension "scipy._lib.messagestream" sources
+  customize Gnu95FCompiler
+  Found executable /usr/bin/gfortran
+  customize Gnu95FCompiler
+  customize Gnu95FCompiler using config
+  C compiler: gcc -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -DTHREAD_STACK_SIZE=0x100000 -fPIC
+  
+  compile options: '-I/usr/local/include/python3.6m -c'
+  gcc: _configtest.c
+  gcc _configtest.o -o _configtest
+  success!
+  removing: _configtest.c _configtest.o _configtest
+  building extension "scipy._lib._uarray._uarray" sources
+  building data_files sources
+  build_src: building npy-pkg config files
+  running build_py
+  creating build/lib.linux-x86_64-3.6
+  creating build/lib.linux-x86_64-3.6/scipy
+  copying scipy/_distributor_init.py -> build/lib.linux-x86_64-3.6/scipy
+  copying scipy/setup.py -> build/lib.linux-x86_64-3.6/scipy
+  copying scipy/version.py -> build/lib.linux-x86_64-3.6/scipy
+  copying scipy/__init__.py -> build/lib.linux-x86_64-3.6/scipy
+  copying scipy/conftest.py -> build/lib.linux-x86_64-3.6/scipy
+  copying build/src.linux-x86_64-3.6/scipy/__config__.py -> build/lib.linux-x86_64-3.6/scipy
+  creating build/lib.linux-x86_64-3.6/scipy/cluster
+  copying scipy/cluster/setup.py -> build/lib.linux-x86_64-3.6/scipy/cluster
+  copying scipy/cluster/hierarchy.py -> build/lib.linux-x86_64-3.6/scipy/cluster
+  copying scipy/cluster/vq.py -> build/lib.linux-x86_64-3.6/scipy/cluster
+  copying scipy/cluster/__init__.py -> build/lib.linux-x86_64-3.6/scipy/cluster
+  creating build/lib.linux-x86_64-3.6/scipy/constants
+  copying scipy/constants/setup.py -> build/lib.linux-x86_64-3.6/scipy/constants
+  copying scipy/constants/__init__.py -> build/lib.linux-x86_64-3.6/scipy/constants
+  copying scipy/constants/codata.py -> build/lib.linux-x86_64-3.6/scipy/constants
+  copying scipy/constants/constants.py -> build/lib.linux-x86_64-3.6/scipy/constants
+  creating build/lib.linux-x86_64-3.6/scipy/fft
+  copying scipy/fft/_basic.py -> build/lib.linux-x86_64-3.6/scipy/fft
+  copying scipy/fft/_realtransforms.py -> build/lib.linux-x86_64-3.6/scipy/fft
+  copying scipy/fft/_backend.py -> build/lib.linux-x86_64-3.6/scipy/fft
+  copying scipy/fft/setup.py -> build/lib.linux-x86_64-3.6/scipy/fft
+  copying scipy/fft/_debug_backends.py -> build/lib.linux-x86_64-3.6/scipy/fft
+  copying scipy/fft/_helper.py -> build/lib.linux-x86_64-3.6/scipy/fft
+  copying scipy/fft/__init__.py -> build/lib.linux-x86_64-3.6/scipy/fft
+  creating build/lib.linux-x86_64-3.6/scipy/fft/_pocketfft
+  copying scipy/fft/_pocketfft/setup.py -> build/lib.linux-x86_64-3.6/scipy/fft/_pocketfft
+  copying scipy/fft/_pocketfft/helper.py -> build/lib.linux-x86_64-3.6/scipy/fft/_pocketfft
+  copying scipy/fft/_pocketfft/realtransforms.py -> build/lib.linux-x86_64-3.6/scipy/fft/_pocketfft
+  copying scipy/fft/_pocketfft/__init__.py -> build/lib.linux-x86_64-3.6/scipy/fft/_pocketfft
+  copying scipy/fft/_pocketfft/basic.py -> build/lib.linux-x86_64-3.6/scipy/fft/_pocketfft
+  creating build/lib.linux-x86_64-3.6/scipy/fftpack
+  copying scipy/fftpack/pseudo_diffs.py -> build/lib.linux-x86_64-3.6/scipy/fftpack
+  copying scipy/fftpack/setup.py -> build/lib.linux-x86_64-3.6/scipy/fftpack
+  copying scipy/fftpack/helper.py -> build/lib.linux-x86_64-3.6/scipy/fftpack
+  copying scipy/fftpack/realtransforms.py -> build/lib.linux-x86_64-3.6/scipy/fftpack
+  copying scipy/fftpack/__init__.py -> build/lib.linux-x86_64-3.6/scipy/fftpack
+  copying scipy/fftpack/basic.py -> build/lib.linux-x86_64-3.6/scipy/fftpack
+  creating build/lib.linux-x86_64-3.6/scipy/integrate
+  copying scipy/integrate/quadrature.py -> build/lib.linux-x86_64-3.6/scipy/integrate
+  copying scipy/integrate/quadpack.py -> build/lib.linux-x86_64-3.6/scipy/integrate
+  copying scipy/integrate/_quad_vec.py -> build/lib.linux-x86_64-3.6/scipy/integrate
+  copying scipy/integrate/setup.py -> build/lib.linux-x86_64-3.6/scipy/integrate
+  copying scipy/integrate/_bvp.py -> build/lib.linux-x86_64-3.6/scipy/integrate
+  copying scipy/integrate/__init__.py -> build/lib.linux-x86_64-3.6/scipy/integrate
+  copying scipy/integrate/odepack.py -> build/lib.linux-x86_64-3.6/scipy/integrate
+  copying scipy/integrate/_ode.py -> build/lib.linux-x86_64-3.6/scipy/integrate
+  creating build/lib.linux-x86_64-3.6/scipy/integrate/_ivp
+  copying scipy/integrate/_ivp/base.py -> build/lib.linux-x86_64-3.6/scipy/integrate/_ivp
+  copying scipy/integrate/_ivp/bdf.py -> build/lib.linux-x86_64-3.6/scipy/integrate/_ivp
+  copying scipy/integrate/_ivp/rk.py -> build/lib.linux-x86_64-3.6/scipy/integrate/_ivp
+  copying scipy/integrate/_ivp/dop853_coefficients.py -> build/lib.linux-x86_64-3.6/scipy/integrate/_ivp
+  copying scipy/integrate/_ivp/radau.py -> build/lib.linux-x86_64-3.6/scipy/integrate/_ivp
+  copying scipy/integrate/_ivp/ivp.py -> build/lib.linux-x86_64-3.6/scipy/integrate/_ivp
+  copying scipy/integrate/_ivp/lsoda.py -> build/lib.linux-x86_64-3.6/scipy/integrate/_ivp
+  copying scipy/integrate/_ivp/common.py -> build/lib.linux-x86_64-3.6/scipy/integrate/_ivp
+  copying scipy/integrate/_ivp/__init__.py -> build/lib.linux-x86_64-3.6/scipy/integrate/_ivp
+  creating build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/_pade.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/rbf.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/interpnd_info.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/fitpack.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/_bsplines.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/fitpack2.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/setup.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/polyint.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/_fitpack_impl.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/__init__.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/ndgriddata.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/interpolate.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  copying scipy/interpolate/_cubic.py -> build/lib.linux-x86_64-3.6/scipy/interpolate
+  creating build/lib.linux-x86_64-3.6/scipy/io
+  copying scipy/io/_fortran.py -> build/lib.linux-x86_64-3.6/scipy/io
+  copying scipy/io/idl.py -> build/lib.linux-x86_64-3.6/scipy/io
+  copying scipy/io/mmio.py -> build/lib.linux-x86_64-3.6/scipy/io
+  copying scipy/io/setup.py -> build/lib.linux-x86_64-3.6/scipy/io
+  copying scipy/io/wavfile.py -> build/lib.linux-x86_64-3.6/scipy/io
+  copying scipy/io/__init__.py -> build/lib.linux-x86_64-3.6/scipy/io
+  copying scipy/io/netcdf.py -> build/lib.linux-x86_64-3.6/scipy/io
+  creating build/lib.linux-x86_64-3.6/scipy/io/matlab
+  copying scipy/io/matlab/byteordercodes.py -> build/lib.linux-x86_64-3.6/scipy/io/matlab
+  copying scipy/io/matlab/mio4.py -> build/lib.linux-x86_64-3.6/scipy/io/matlab
+  copying scipy/io/matlab/miobase.py -> build/lib.linux-x86_64-3.6/scipy/io/matlab
+  copying scipy/io/matlab/setup.py -> build/lib.linux-x86_64-3.6/scipy/io/matlab
+  copying scipy/io/matlab/mio5_params.py -> build/lib.linux-x86_64-3.6/scipy/io/matlab
+  copying scipy/io/matlab/__init__.py -> build/lib.linux-x86_64-3.6/scipy/io/matlab
+  copying scipy/io/matlab/mio5.py -> build/lib.linux-x86_64-3.6/scipy/io/matlab
+  copying scipy/io/matlab/mio.py -> build/lib.linux-x86_64-3.6/scipy/io/matlab
+  creating build/lib.linux-x86_64-3.6/scipy/io/arff
+  copying scipy/io/arff/arffread.py -> build/lib.linux-x86_64-3.6/scipy/io/arff
+  copying scipy/io/arff/setup.py -> build/lib.linux-x86_64-3.6/scipy/io/arff
+  copying scipy/io/arff/__init__.py -> build/lib.linux-x86_64-3.6/scipy/io/arff
+  creating build/lib.linux-x86_64-3.6/scipy/io/harwell_boeing
+  copying scipy/io/harwell_boeing/_fortran_format_parser.py -> build/lib.linux-x86_64-3.6/scipy/io/harwell_boeing
+  copying scipy/io/harwell_boeing/setup.py -> build/lib.linux-x86_64-3.6/scipy/io/harwell_boeing
+  copying scipy/io/harwell_boeing/hb.py -> build/lib.linux-x86_64-3.6/scipy/io/harwell_boeing
+  copying scipy/io/harwell_boeing/__init__.py -> build/lib.linux-x86_64-3.6/scipy/io/harwell_boeing
+  creating build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/decomp.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/interpolative.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/blas.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_matfuncs_sqrtm.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/matfuncs.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_sketches.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/decomp_qr.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_decomp_polar.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_matfuncs_inv_ssq.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/decomp_svd.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_procrustes.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/setup.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/special_matrices.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/misc.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_expm_frechet.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_decomp_qz.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/decomp_lu.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_cython_signature_generator.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_solvers.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_generate_pyx.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/flinalg.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_decomp_ldl.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/decomp_schur.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/__init__.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_interpolative_backend.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/lapack.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/_testutils.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/linalg_version.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/decomp_cholesky.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  copying scipy/linalg/basic.py -> build/lib.linux-x86_64-3.6/scipy/linalg
+  creating build/lib.linux-x86_64-3.6/scipy/misc
+  copying scipy/misc/setup.py -> build/lib.linux-x86_64-3.6/scipy/misc
+  copying scipy/misc/doccer.py -> build/lib.linux-x86_64-3.6/scipy/misc
+  copying scipy/misc/common.py -> build/lib.linux-x86_64-3.6/scipy/misc
+  copying scipy/misc/__init__.py -> build/lib.linux-x86_64-3.6/scipy/misc
+  creating build/lib.linux-x86_64-3.6/scipy/odr
+  copying scipy/odr/setup.py -> build/lib.linux-x86_64-3.6/scipy/odr
+  copying scipy/odr/odrpack.py -> build/lib.linux-x86_64-3.6/scipy/odr
+  copying scipy/odr/add_newdocs.py -> build/lib.linux-x86_64-3.6/scipy/odr
+  copying scipy/odr/__init__.py -> build/lib.linux-x86_64-3.6/scipy/odr
+  copying scipy/odr/models.py -> build/lib.linux-x86_64-3.6/scipy/odr
+  creating build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/minpack.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_linprog_rs.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_minimize.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_linprog_simplex.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_tstutils.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_trustregion.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_linprog_util.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/tnc.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/nonlin.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_trustregion_ncg.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_dual_annealing.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_numdiff.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/setup.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_differentiable_functions.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_root_scalar.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/linesearch.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_differentialevolution.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/optimize.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/nnls.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_linprog_ip.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_basinhopping.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/cobyla.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_remove_redundancy.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_trustregion_krylov.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_spectral.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_trustregion_exact.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_lsap.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_linprog.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_shgo.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/__init__.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/lbfgsb.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/slsqp.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_constraints.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_root.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_hessian_update_strategy.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/zeros.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  copying scipy/optimize/_trustregion_dogleg.py -> build/lib.linux-x86_64-3.6/scipy/optimize
+  creating build/lib.linux-x86_64-3.6/scipy/optimize/_lsq
+  copying scipy/optimize/_lsq/dogbox.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_lsq
+  copying scipy/optimize/_lsq/least_squares.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_lsq
+  copying scipy/optimize/_lsq/setup.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_lsq
+  copying scipy/optimize/_lsq/trf_linear.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_lsq
+  copying scipy/optimize/_lsq/bvls.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_lsq
+  copying scipy/optimize/_lsq/lsq_linear.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_lsq
+  copying scipy/optimize/_lsq/common.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_lsq
+  copying scipy/optimize/_lsq/__init__.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_lsq
+  copying scipy/optimize/_lsq/trf.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_lsq
+  creating build/lib.linux-x86_64-3.6/scipy/optimize/_trlib
+  copying scipy/optimize/_trlib/setup.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trlib
+  copying scipy/optimize/_trlib/__init__.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trlib
+  creating build/lib.linux-x86_64-3.6/scipy/optimize/_trustregion_constr
+  copying scipy/optimize/_trustregion_constr/canonical_constraint.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trustregion_constr
+  copying scipy/optimize/_trustregion_constr/report.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trustregion_constr
+  copying scipy/optimize/_trustregion_constr/qp_subproblem.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trustregion_constr
+  copying scipy/optimize/_trustregion_constr/projections.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trustregion_constr
+  copying scipy/optimize/_trustregion_constr/equality_constrained_sqp.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trustregion_constr
+  copying scipy/optimize/_trustregion_constr/setup.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trustregion_constr
+  copying scipy/optimize/_trustregion_constr/minimize_trustregion_constr.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trustregion_constr
+  copying scipy/optimize/_trustregion_constr/tr_interior_point.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trustregion_constr
+  copying scipy/optimize/_trustregion_constr/__init__.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_trustregion_constr
+  creating build/lib.linux-x86_64-3.6/scipy/optimize/cython_optimize
+  copying scipy/optimize/cython_optimize/__init__.py -> build/lib.linux-x86_64-3.6/scipy/optimize/cython_optimize
+  creating build/lib.linux-x86_64-3.6/scipy/optimize/_shgo_lib
+  copying scipy/optimize/_shgo_lib/triangulation.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_shgo_lib
+  copying scipy/optimize/_shgo_lib/__init__.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_shgo_lib
+  copying scipy/optimize/_shgo_lib/sobol_seq.py -> build/lib.linux-x86_64-3.6/scipy/optimize/_shgo_lib
+  creating build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/_peak_finding.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/ltisys.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/spectral.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/fir_filter_design.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/waveforms.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/setup.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/bsplines.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/_savitzky_golay.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/_upfirdn.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copyin[0m[91mg scipy/signal/signaltools.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/filter_design.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/wavelets.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/__init__.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/_max_len_seq.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/lti_conversion.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  copying scipy/signal/_arraytools.py -> build/lib.linux-x86_64-3.6/scipy/signal
+  creating build/lib.linux-x86_64-3.6/scipy/signal/windows
+  copying scipy/signal/windows/setup.py -> build/lib.linux-x86_64-3.6/scipy/signal/windows
+  copying scipy/signal/windows/windows.py -> build/lib.linux-x86_64-3.6/scipy/signal/windows
+  copying scipy/signal/windows/__init__.py -> build/lib.linux-x86_64-3.6/scipy/signal/windows
+  creating build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/base.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/csr.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/_index.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/construct.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/sparsetools.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/dia.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/sputils.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/setup.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/bsr.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/extract.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/spfuncs.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/data.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/lil.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/coo.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/generate_sparsetools.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/dok.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/compressed.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/_matrix_io.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/__init__.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  copying scipy/sparse/csc.py -> build/lib.linux-x86_64-3.6/scipy/sparse
+  creating build/lib.linux-x86_64-3.6/scipy/sparse/linalg
+  copying scipy/sparse/linalg/_expm_multiply.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg
+  copying scipy/sparse/linalg/matfuncs.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg
+  copying scipy/sparse/linalg/_norm.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg
+  copying scipy/sparse/linalg/setup.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg
+  copying scipy/sparse/linalg/_onenormest.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg
+  copying scipy/sparse/linalg/__init__.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg
+  copying scipy/sparse/linalg/interface.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg
+  creating build/lib.linux-x86_64-3.6/scipy/sparse/linalg/isolve
+  copying scipy/sparse/linalg/isolve/minres.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/isolve
+  copying scipy/sparse/linalg/isolve/_gcrotmk.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/isolve
+  copying scipy/sparse/linalg/isolve/lgmres.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/isolve
+  copying scipy/sparse/linalg/isolve/iterative.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/isolve
+  copying scipy/sparse/linalg/isolve/utils.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/isolve
+  copying scipy/sparse/linalg/isolve/setup.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/isolve
+  copying scipy/sparse/linalg/isolve/lsmr.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/isolve
+  copying scipy/sparse/linalg/isolve/__init__.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/isolve
+  copying scipy/sparse/linalg/isolve/lsqr.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/isolve
+  creating build/lib.linux-x86_64-3.6/scipy/sparse/linalg/dsolve
+  copying scipy/sparse/linalg/dsolve/linsolve.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/dsolve
+  copying scipy/sparse/linalg/dsolve/setup.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/dsolve
+  copying scipy/sparse/linalg/dsolve/__init__.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/dsolve
+  copying scipy/sparse/linalg/dsolve/_add_newdocs.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/dsolve
+  creating build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen
+  copying scipy/sparse/linalg/eigen/setup.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen
+  copying scipy/sparse/linalg/eigen/__init__.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen
+  creating build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen/arpack
+  copying scipy/sparse/linalg/eigen/arpack/setup.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen/arpack
+  copying scipy/sparse/linalg/eigen/arpack/arpack.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen/arpack
+  copying scipy/sparse/linalg/eigen/arpack/__init__.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen/arpack
+  creating build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen/lobpcg
+  copying scipy/sparse/linalg/eigen/lobpcg/setup.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen/lobpcg
+  copying scipy/sparse/linalg/eigen/lobpcg/lobpcg.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen/lobpcg
+  copying scipy/sparse/linalg/eigen/lobpcg/__init__.py -> build/lib.linux-x86_64-3.6/scipy/sparse/linalg/eigen/lobpcg
+  creating build/lib.linux-x86_64-3.6/scipy/sparse/csgraph
+  copying scipy/sparse/csgraph/_laplacian.py -> build/lib.linux-x86_64-3.6/scipy/sparse/csgraph
+  copying scipy/sparse/csgraph/setup.py -> build/lib.linux-x86_64-3.6/scipy/sparse/csgraph
+  copying scipy/sparse/csgraph/__init__.py -> build/lib.linux-x86_64-3.6/scipy/sparse/csgraph
+  copying scipy/sparse/csgraph/_validation.py -> build/lib.linux-x86_64-3.6/scipy/sparse/csgraph
+  creating build/lib.linux-x86_64-3.6/scipy/spatial
+  copying scipy/spatial/kdtree.py -> build/lib.linux-x86_64-3.6/scipy/spatial
+  copying scipy/spatial/distance.py -> build/lib.linux-x86_64-3.6/scipy/spatial
+  copying scipy/spatial/_procrustes.py -> build/lib.linux-x86_64-3.6/scipy/spatial
+  copying scipy/spatial/setup.py -> build/lib.linux-x86_64-3.6/scipy/spatial
+  copying scipy/spatial/_plotutils.py -> build/lib.linux-x86_64-3.6/scipy/spatial
+  copying scipy/spatial/__init__.py -> build/lib.linux-x86_64-3.6/scipy/spatial
+  copying scipy/spatial/_spherical_voronoi.py -> build/lib.linux-x86_64-3.6/scipy/spatial
+  creating build/lib.linux-x86_64-3.6/scipy/spatial/transform
+  copying scipy/spatial/transform/setup.py -> build/lib.linux-x86_64-3.6/scipy/spatial/transform
+  copying scipy/spatial/transform/rotation.py -> build/lib.linux-x86_64-3.6/scipy/spatial/transform
+  copying scipy/spatial/transform/_rotation_spline.py -> build/lib.linux-x86_64-3.6/scipy/spatial/transform
+  copying scipy/spatial/transform/_rotation_groups.py -> build/lib.linux-x86_64-3.6/scipy/spatial/transform
+  copying scipy/spatial/transform/__init__.py -> build/lib.linux-x86_64-3.6/scipy/spatial/transform
+  creating build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/_basic.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/sf_error.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/_logsumexp.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/spfun_stats.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/_spherical_bessel.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/orthogonal.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/setup.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/_ellip_harm.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/add_newdocs.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/_generate_pyx.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/__init__.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/lambertw.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/_mptestutils.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/_testutils.py -> build/lib.linux-x86_64-3.6/scipy/special
+  copying scipy/special/basic.py -> build/lib.linux-x86_64-3.6/scipy/special
+  creating build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/gammainc_asy.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/wrightomega.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/expn_asy.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/utils.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/setup.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/loggamma.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/zetac.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/gammainc_data.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/__init__.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/lambertw.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  copying scipy/special/_precompute/struve_convergence.py -> build/lib.linux-x86_64-3.6/scipy/special/_precompute
+  creating build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/mstats.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_discrete_distns.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_multivariate.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_distr_params.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_constants.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/distributions.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_continuous_distns.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_hypotests.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/vonmises.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_stats_mstats_common.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/contingency.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/stats.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/setup.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_distn_infrastructure.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_tukeylambda_stats.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/mstats_extras.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_binned_statistic.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/morestats.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/__init__.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/mstats_basic.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/kde.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  copying scipy/stats/_rvs_sampling.py -> build/lib.linux-x86_64-3.6/scipy/stats
+  creating build/lib.linux-x86_64-3.6/scipy/ndimage
+  copying scipy/ndimage/morphology.py -> build/lib.linux-x86_64-3.6/scipy/ndimage
+  copying scipy/ndimage/filters.py -> build/lib.linux-x86_64-3.6/scipy/ndimage
+  copying scipy/ndimage/setup.py -> build/lib.linux-x86_64-3.6/scipy/ndimage
+  copying scipy/ndimage/interpolation.py -> build/lib.linux-x86_64-3.6/scipy/ndimage
+  copying scipy/ndimage/fourier.py -> build/lib.linux-x86_64-3.6/scipy/ndimage
+  copying scipy/ndimage/_ni_support.py -> build/lib.linux-x86_64-3.6/scipy/ndimage
+  copying scipy/ndimage/measurements.py -> build/lib.linux-x86_64-3.6/scipy/ndimage
+  copying scipy/ndimage/__init__.py -> build/lib.linux-x86_64-3.6/scipy/ndimage
+  copying scipy/ndimage/_ni_docstrings.py -> build/lib.linux-x86_64-3.6/scipy/ndimage
+  creating build/lib.linux-x86_64-3.6/scipy/_build_utils
+  copying scipy/_build_utils/_fortran.py -> build/lib.linux-x86_64-3.6/scipy/_build_utils
+  copying scipy/_build_utils/setup.py -> build/lib.linux-x86_64-3.6/scipy/_build_utils
+  copying scipy/_build_utils/system_info.py -> build/lib.linux-x86_64-3.6/scipy/_build_utils
+  copying scipy/_build_utils/compiler_helper.py -> build/lib.linux-x86_64-3.6/scipy/_build_utils
+  copying scipy/_build_utils/__init__.py -> build/lib.linux-x86_64-3.6/scipy/_build_utils
+  creating build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/_version.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/_tmpdirs.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/decorator.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/_threadsafety.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/six.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/_gcutils.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/deprecation.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/_numpy_compat.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/_ccallback.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/setup.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/doccer.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/_pep440.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/uarray.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/_util.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/__init__.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  copying scipy/_lib/_testutils.py -> build/lib.linux-x86_64-3.6/scipy/_lib
+  creating build/lib.linux-x86_64-3.6/scipy/_lib/_uarray
+  copying scipy/_lib/_uarray/_backend.py -> build/lib.linux-x86_64-3.6/scipy/_lib/_uarray
+  copying scipy/_lib/_uarray/setup.py -> build/lib.linux-x86_64-3.6/scipy/_lib/_uarray
+  copying scipy/_lib/_uarray/__init__.py -> build/lib.linux-x86_64-3.6/scipy/_lib/_uarray
+  running build_clib
+  customize UnixCCompiler
+  customize UnixCCompiler using build_clib
+  customize Gnu95FCompiler
+  customize Gnu95FCompiler
+  customize Gnu95FCompiler using build_clib
+  building 'mach' library
+  using additional config_fc from setup script for fortran compiler: {'noopt': ('scipy/integrate/setup.py', 1)}
+  customize Gnu95FCompiler
+  compiling Fortran sources
+  Fortran f77 compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC
+  Fortran f90 compiler: /usr/bin/gfortran -Wall -g -fno-second-underscore -fPIC
+  Fortran fix compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -Wall -g -fno-second-underscore -fPIC
+  creating build/temp.linux-x86_64-3.6
+  creating build/temp.linux-x86_64-3.6/scipy
+  creating build/temp.linux-x86_64-3.6/scipy/integrate
+  creating build/temp.linux-x86_64-3.6/scipy/integrate/mach
+  compile options: '-I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c'
+  gfortran:f77: scipy/integrate/mach/d1mach.f
+  gfortran:f77: scipy/integrate/mach/xerror.f
+  scipy/integrate/mach/xerror.f:1:37:
+  
+         SUBROUTINE XERROR(MESS,NMESS,L1,L2)
+                                       1
+  Warning: Unused dummy argument 'l1' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/mach/xerror.f:1:40:
+  
+         SUBROUTINE XERROR(MESS,NMESS,L1,L2)
+                                          1
+  Warning: Unused dummy argument 'l2' at (1) [-Wunused-dummy-argument]
+  ar: adding 2 object files to build/temp.linux-x86_64-3.6/libmach.a
+  building 'quadpack' library
+  compiling Fortran sources
+  Fortran f77 compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran f90 compiler: /usr/bin/gfortran -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran fix compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  creating build/temp.linux-x86_64-3.6/scipy/integrate/quadpack
+  compile options: '-I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c'
+  gfortran:f77: scipy/integrate/quadpack/dqawce.f
+  gfortran:f77: scipy/integrate/quadpack/dqc25f.f
+  scipy/integrate/quadpack/dqc25f.f:103:0:
+  
+         integer i,iers,integr,isym,j,k,ksave,m,momcom,neval,maxp1,
+  
+  Warning: 'm' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/integrate/quadpack/dqawfe.f
+  scipy/integrate/quadpack/dqawfe.f:267:10:
+  
+      10 l = dabs(omega)
+            1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/integrate/quadpack/dqawfe.f:358:0:
+  
+         if(ier.ge.1.and.ier.ne.7) abserr = abserr+drl
+  
+  Warning: 'drl' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/quadpack/dqawfe.f:316:0:
+  
+      20   psum(numrl2) = psum(ll)+rslst(lst)
+  
+  Warning: 'll' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/integrate/quadpack/dqagpe.f
+  scipy/integrate/quadpack/dqagpe.f:524:0:
+  
+         if(ierro.eq.3) abserr = abserr+correc
+  
+  Warning: 'correc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/quadpack/dqagpe.f:350:0:
+  
+           iord(k) = iord(i)
+  
+  Warning: 'k' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/integrate/quadpack/dqawo.f
+  gfortran:f77: scipy/integrate/quadpack/dqawse.f
+  gfortran:f77: scipy/integrate/quadpack/dqaws.f
+  gfortran:f77: scipy/integrate/quadpack/dqagp.f
+  gfortran:f77: scipy/integrate/quadpack/dqk51.f
+  gfortran:f77: scipy/integrate/quadpack/dqpsrt.f
+  gfortran:f77: scipy/integrate/quadpack/dqagi.f
+  gfortran:f77: scipy/integrate/quadpack/dqng.f
+  gfortran:f77: scipy/integrate/quadpack/dqk21.f
+  gfortran:f77: scipy/integrate/quadpack/dqk15.f
+  gfortran:f77: scipy/integrate/quadpack/dqc25c.f
+  gfortran:f77: scipy/integrate/quadpack/dqwgtc.f
+  scipy/integrate/quadpack/dqwgtc.f:1:54:
+  
+         double precision function dqwgtc(x,c,p2,p3,p4,kp)
+                                                        1
+  Warning: Unused dummy argument 'kp' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/quadpack/dqwgtc.f:1:45:
+  
+         double precision function dqwgtc(x,c,p2,p3,p4,kp)
+                                               1
+  Warning: Unused dummy argument 'p2' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/quadpack/dqwgtc.f:1:48:
+  
+         double precision function dqwgtc(x,c,p2,p3,p4,kp)
+                                                  1
+  Warning: Unused dummy argument 'p3' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/quadpack/dqwgtc.f:1:51:
+  
+         double precision function dqwgtc(x,c,p2,p3,p4,kp)
+                                                     1
+  Warning: Unused dummy argument 'p4' at (1) [-Wunused-dummy-argument]
+  gfortran:f77: scipy/integrate/quadpack/dqmomo.f
+  scipy/integrate/quadpack/dqmomo.f:126:5:
+  
+      90 return
+       1
+  Warning: Label 90 at (1) defined but not used [-Wunused-label]
+  gfortran:f77: scipy/integrate/quadpack/dqagse.f
+  scipy/integrate/quadpack/dqagse.f:404:0:
+  
+           small = small*0.5d+00
+  
+  Warning: 'small' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/quadpack/dqagse.f:363:0:
+  
+      40   if(ierro.eq.3.or.erlarg.le.ertest) go to 60
+  
+  Warning: 'ertest' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/quadpack/dqagse.f:353:0:
+  
+           erlarg = erlarg-erlast
+  
+  Warning: 'erlarg' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/quadpack/dqagse.f:418:0:
+  
+         if(ierro.eq.3) abserr = abserr+correc
+  
+  Warning: 'correc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/integrate/quadpack/dqage.f
+  gfortran:f77: scipy/integrate/quadpack/dqagie.f
+  scipy/integrate/quadpack/dqagie.f:411:0:
+  
+           small = small*0.5d+00
+  
+  Warning: 'small' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/quadpack/dqagie.f:372:0:
+  
+      40   if(ierro.eq.3.or.erlarg.le.ertest) go to 60
+  
+  Warning: 'ertest' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/quadpack/dqagie.f:362:0:
+  
+           erlarg = erlarg-erlast
+  
+  Warning: 'erlarg' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/integrate/quadpack/dqk15i.f
+  gfortran:f77: scipy/integrate/quadpack/dqk15w.f
+  gfortran:f77: scipy/integrate/quadpack/dqag.f
+  gfortran:f77: scipy/integrate/quadpack/dqawc.f
+  gfortran:f77: scipy/integrate/quadpack/dqcheb.f
+  gfortran:f77: scipy/integrate/quadpack/dqawoe.f
+  scipy/integrate/quadpack/dqawoe.f:449:0:
+  
+      70   if(ierro.eq.3.or.erlarg.le.ertest) go to 90
+  
+  Warning: 'ertest' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/quadpack/dqawoe.f:428:0:
+  
+           erlarg = erlarg-erlast
+  
+  Warning: 'erlarg' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/quadpack/dqawoe.f:505:0:
+  
+         if(ierro.eq.3) abserr = abserr+correc
+  
+  Warning: 'correc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/integrate/quadpack/dqwgts.f
+  gfortran:f77: scipy/integrate/quadpack/dqelg.f
+  gfortran:f77: scipy/integrate/quadpack/dqags.f
+  gfortran:f77: scipy/integrate/quadpack/dqk61.f
+  gfortran:f77: scipy/integrate/quadpack/dqk31.f
+  gfortran:f77: scipy/integrate/quadpack/dqc25s.f
+  gfortran:f77: scipy/integrate/quadpack/dqwgtf.f
+  scipy/integrate/quadpack/dqwgtf.f:1:49:
+  
+         double precision function dqwgtf(x,omega,p2,p3,p4,integr)
+                                                   1
+  Warning: Unused dummy argument 'p2' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/quadpack/dqwgtf.f:1:52:
+  
+         double precision function dqwgtf(x,omega,p2,p3,p4,integr)
+                                                      1
+  Warning: Unused dummy argument 'p3' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/quadpack/dqwgtf.f:1:55:
+  
+         double precision function dqwgtf(x,omega,p2,p3,p4,integr)
+                                                         1
+  Warning: Unused dummy argument 'p4' at (1) [-Wunused-dummy-argument]
+  gfortran:f77: scipy/integrate/quadpack/dqk41.f
+  gfortran:f77: scipy/integrate/quadpack/dqawf.f
+  ar: adding 35 object files to build/temp.linux-x86_64-3.6/libquadpack.a
+  building 'lsoda' library
+  compiling Fortran sources
+  Fortran f77 compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran f90 compiler: /usr/bin/gfortran -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran fix compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  creating build/temp.linux-x86_64-3.6/scipy/integrate/odepack
+  compile options: '-I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c'
+  gfortran:f77: scipy/integrate/odepack/blkdta000.f
+  gfortran:f77: scipy/integrate/odepack/bnorm.f
+  gfortran:f77: scipy/integrate/odepack/cfode.f
+  gfortran:f77: scipy/integrate/odepack/ewset.f
+  gfortran:f77: scipy/integrate/odepack/fnorm.f
+  gfortran:f77: scipy/integrate/odepack/intdy.f
+  gfortran:f77: scipy/integrate/odepack/lsoda.f
+  scipy/integrate/odepack/lsoda.f:1428:0:
+  
+         if (ihit) t = tcrit
+  
+  Warning: 'ihit' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/odepack/lsoda.f:1112:0:
+  
+         len1s = len1s + lenwm
+  
+  Warning: 'lenwm' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/integrate/odepack/prja.f
+  gfortran:f77: scipy/integrate/odepack/solsy.f
+  scipy/integrate/odepack/solsy.f:1:39:
+  
+         subroutine solsy (wm, iwm, x, tem)
+                                         1
+  Warning: Unused dummy argument 'tem' at (1) [-Wunused-dummy-argument]
+  gfortran:f77: scipy/integrate/odepack/srcma.f
+  gfortran:f77: scipy/integrate/odepack/stoda.f
+  gfortran:f77: scipy/integrate/odepack/vmnorm.f
+  gfortran:f77: scipy/integrate/odepack/xerrwv.f
+  scipy/integrate/odepack/xerrwv.f:1:40:
+  
+         subroutine xerrwv (msg, nmes, nerr, level, ni, i1, i2, nr, r1, r2)
+                                          1
+  Warning: Unused dummy argument 'nerr' at (1) [-Wunused-dummy-argument]
+  gfortran:f77: scipy/integrate/odepack/xsetf.f
+  gfortran:f77: scipy/integrate/odepack/xsetun.f
+  ar: adding 15 object files to build/temp.linux-x86_64-3.6/liblsoda.a
+  building 'vode' library
+  compiling Fortran sources
+  Fortran f77 compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran f90 compiler: /usr/bin/gfortran -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran fix compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  compile options: '-I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c'
+  gfortran:f77: scipy/integrate/odepack/vode.f
+  scipy/integrate/odepack/vode.f:2370:4:
+  
+    700  R = ONE/TQ(2)
+      1
+  Warning: Label 700 at (1) defined but not used [-Wunused-label]
+  scipy/integrate/odepack/vode.f:3519:40:
+  
+         SUBROUTINE XERRWD (MSG, NMES, NERR, LEVEL, NI, I1, I2, NR, R1, R2)
+                                          1
+  Warning: Unused dummy argument 'nerr' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/odepack/vode.f:3500:44:
+  
+         DOUBLE PRECISION FUNCTION D1MACH (IDUM)
+                                              1
+  Warning: Unused dummy argument 'idum' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/odepack/vode.f:2737:35:
+  
+        1                 F, JAC, PDUM, NFLAG, RPAR, IPAR)
+                                     1
+  Warning: Unused dummy argument 'pdum' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/odepack/vode.f:2736:42:
+  
+         SUBROUTINE DVNLSD (Y, YH, LDYH, VSAV, SAVF, EWT, ACOR, IWM, WM,
+                                            1
+  Warning: Unused dummy argument 'vsav' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/odepack/vode.f:3615:0:
+  
+         INTEGER FUNCTION IXSAV (IPAR, IVALUE, ISET)
+  
+  Warning: '__result_ixsav' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/integrate/odepack/vode.f:1487:0:
+  
+         IF (IHIT) T = TCRIT
+  
+  Warning: 'ihit' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/integrate/odepack/zvode.f
+  scipy/integrate/odepack/zvode.f:2391:4:
+  
+    700  R = ONE/TQ(2)
+      1
+  Warning: Label 700 at (1) defined but not used [-Wunused-label]
+  scipy/integrate/odepack/zvode.f:2758:35:
+  
+        1                 F, JAC, PDUM, NFLAG, RPAR, IPAR)
+                                     1
+  Warning: Unused dummy argument 'pdum' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/odepack/zvode.f:2757:42:
+  
+         SUBROUTINE ZVNLSD (Y, YH, LDYH, VSAV, SAVF, EWT, ACOR, IWM, WM,
+                                            1
+  Warning: Unused dummy argument 'vsav' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/odepack/zvode.f:1502:0:
+  
+         IF (IHIT) T = TCRIT
+  
+  Warning: 'ihit' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  ar: adding 2 object files to build/temp.linux-x86_64-3.6/libvode.a
+  building 'dop' library
+  compiling Fortran sources
+  Fortran f77 compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran f90 compiler: /usr/bin/gfortran -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran fix compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  creating build/temp.linux-x86_64-3.6/scipy/integrate/dop
+  compile options: '-I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c'
+  gfortran:f77: scipy/integrate/dop/dop853.f
+  scipy/integrate/dop/dop853.f:364:42:
+  
+        &   SOLOUT,IOUT,IDID,NMAX,UROUND,METH,NSTIFF,SAFE,BETA,FAC1,FAC2,
+                                            1
+  Warning: Unused dummy argument 'meth' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/dop/dop853.f:791:38:
+  
+         FUNCTION HINIT853(N,FCN,X,Y,XEND,POSNEG,F0,F1,Y1,IORD,
+                                        1
+  Warning: Unused dummy argument 'xend' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/dop/dop853.f:686:0:
+  
+                  NONSTI=NONSTI+1
+  
+  Warning: 'nonsti' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/integrate/dop/dopri5.f
+  scipy/integrate/dop/dopri5.f:558:35:
+  
+         FUNCTION HINIT(N,FCN,X,Y,XEND,POSNEG,F0,F1,Y1,IORD,
+                                     1
+  Warning: Unused dummy argument 'xend' at (1) [-Wunused-dummy-argument]
+  scipy/integrate/dop/dopri5.f:491:0:
+  
+                  NONSTI=NONSTI+1
+  
+  Warning: 'nonsti' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  ar: adding 2 object files to build/temp.linux-x86_64-3.6/libdop.a
+  building 'fitpack' library
+  compiling Fortran sources
+  Fortran f77 compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran f90 compiler: /usr/bin/gfortran -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran fix compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  creating build/temp.linux-x86_64-3.6/scipy/interpolate
+  creating build/temp.linux-x86_64-3.6/scipy/interpolate/fitpack
+  compile options: '-I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c'
+  gfortran:f77: scipy/interpolate/fitpack/fpperi.f
+  scipy/interpolate/fitpack/fpperi.f:339:35:
+  
+           if(fpold-fp.gt.acc) npl1 = rn*fpms/(fpold-fp)
+                                     1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fpperi.f:340:0:
+  
+           nplus = min0(nplus*2,max0(npl1,nplus/2,1))
+  
+  Warning: 'nplus' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpperi.f:375:0:
+  
+             if(n.eq.nmax) go to 5
+  
+  Warning: 'nmax' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpperi.f:468:0:
+  
+               if(l0.eq.n10) go to 400
+  
+  Warning: 'n10' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpperi.f:16:0:
+  
+         integer i,ich1,ich3,ij,ik,it,iter,i1,i2,i3,j,jk,jper,j1,j2,kk,
+  
+  Warning: 'i1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpperi.f:13:0:
+  
+         real*8 acc,cos,c1,d1,fpart,fpms,fpold,fp0,f1,f2,f3,p,per,pinv,piv,
+  
+  Warning: 'fpold' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpperi.f:409:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpperi.f:407:0:
+  
+         f1 = fp0-s
+  
+  Warning: 'fp0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpperi.f:574:0:
+  
+           if((f1-f2) .gt. acc) go to 585
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpclos.f
+  scipy/interpolate/fitpack/fpclos.f:395:35:
+  
+           if(fpold-fp.gt.acc) npl1 = rn*fpms/(fpold-fp)
+                                     1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fpclos.f:396:0:
+  
+           nplus = min0(nplus*2,max0(npl1,nplus/2,1))
+  
+  Warning: 'nplus' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpa[0m[91mck/fpclos.f:438:0:
+  
+             if(n.eq.nmax) go to 5
+  
+  Warning: 'nmax' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpclos.f:535:0:
+  
+               if(l0.eq.n10) go to 400
+  
+  Warning: 'n10' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpclos.f:16:0:
+  
+         integer i,ich1,ich3,ij,ik,it,iter,i1,i2,i3,j,jj,jk,jper,j1,j2,kk,
+  
+  Warning: 'i1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpclos.f:13:0:
+  
+         real*8 acc,cos,d1,fac,fpart,fpms,fpold,fp0,f1,f2,f3,p,per,pinv,piv
+  
+  Warning: 'fpold' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpclos.f:472:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpclos.f:470:0:
+  
+         f1 = fp0-s
+  
+  Warning: 'fp0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpclos.f:663:0:
+  
+           if((f1-f2) .gt. acc) go to 585
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/insert.f
+  gfortran:f77: scipy/interpolate/fitpack/fprpsp.f
+  gfortran:f77: scipy/interpolate/fitpack/fpsurf.f
+  scipy/interpolate/fitpack/fpsurf.f:22:0:
+  
+        * nrint,num,num1,nx,nxe,nxx,ny,nye,nyy,n1,rank
+  
+  Warning: 'nyy' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsurf.f:510:0:
+  
+               jrot = (i-kx2)*nk1y+j
+  
+  Warning: 'nk1y' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsurf.f:21:0:
+  
+        * la,lf,lh,lwest,lx,ly,l1,l2,n,ncof,nk1x,nk1y,nminx,nminy,nreg,
+  
+  Warning: 'nk1x' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsurf.f:621:0:
+  
+    780  ier = lwest
+  
+  Warning: 'lwest' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsurf.f:19:0:
+  
+         integer i,iband,iband1,iband3,iband4,ibb,ichang,ich1,ich3,ii,
+  
+  Warning: 'iband1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsurf.f:425:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsurf.f:605:0:
+  
+           if((f1-f2).gt.acc) go to 750
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpbfout.f
+  scipy/interpolate/fitpack/fpbfout.f:117:0:
+  
+           c2 = (hc(5)-hc(4))*term
+  
+  Warning: 'term' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpbacp.f
+  gfortran:f77: scipy/interpolate/fitpack/fpchep.f
+  gfortran:f77: scipy/interpolate/fitpack/fpcsin.f
+  gfortran:f77: scipy/interpolate/fitpack/curev.f
+  gfortran:f77: scipy/interpolate/fitpack/fpback.f
+  gfortran:f77: scipy/interpolate/fitpack/fpknot.f
+  scipy/interpolate/fitpack/fpknot.f:41:0:
+  
+         ihalf = maxpt/2+1
+  
+  Warning: 'maxpt' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpknot.f:42:0:
+  
+         nrx = maxbeg+ihalf
+  
+  Warning: 'maxbeg' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpknot.f:43:0:
+  
+         next = number+1
+  
+  Warning: 'number' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpopsp.f
+  gfortran:f77: scipy/interpolate/fitpack/fpdisc.f
+  gfortran:f77: scipy/interpolate/fitpack/fpspgr.f
+  scipy/interpolate/fitpack/fpspgr.f:315:33:
+  
+           if(reducu.gt.acc) npl1 = rn*fpms/reducu
+                                   1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fpspgr.f:322:33:
+  
+           if(reducv.gt.acc) npl1 = rn*fpms/reducv
+                                   1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fpspgr.f:382:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpspgr.f:414:0:
+  
+           if((f1-f2).gt.acc) go to 330
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpspgr.f:287:0:
+  
+           if(nu.eq.numax .and. nv.eq.nvmax) go to 430
+  
+  Warning: 'nvmax' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpspgr.f:344:0:
+  
+    230    if(nv.eq.nve) go to 210
+  
+  Warning: 'nve' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpspgr.f:287:0:
+  
+           if(nu.eq.numax .and. nv.eq.nvmax) go to 430
+  
+  Warning: 'numax' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpspgr.f:341:0:
+  
+             if(nu.eq.nue) go to 270
+  
+  Warning: 'nue' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fppasu.f
+  scipy/interpolate/fitpack/fppasu.f:272:33:
+  
+           if(reducu.gt.acc) npl1 = rn*fpms/reducu
+                                   1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fppasu.f:279:33:
+  
+           if(reducv.gt.acc) npl1 = rn*fpms/reducv
+                                   1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fppasu.f:336:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppasu.f:308:0:
+  
+             if(nv.eq.nve) go to 250
+  
+  Warning: 'nve' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppasu.f:295:0:
+  
+             if(nu.eq.nue) go to 250
+  
+  Warning: 'nue' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppasu.f:251:0:
+  
+           if(nu.eq.nmaxu .and. nv.eq.nmaxv) go to 430
+  
+  Warning: 'nmaxv' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppasu.f:251:0: Warning: 'nmaxu' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppasu.f:367:0:
+  
+           if((f1-f2).gt.acc) go to 330
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppasu.f:230:0:
+  
+             tv(l2) = tv(l4)-perv
+  
+  Warning: 'perv' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppasu.f:209:0:
+  
+             tu(l3) = tu(l1)+peru
+  
+  Warning: 'peru' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpdeno.f
+  gfortran:f77: scipy/interpolate/fitpack/fpintb.f
+  scipy/interpolate/fitpack/fpintb.f:115:0:
+  
+         if(ib.lt.ia) go to 130
+  
+  Warning: 'ia' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpcyt2.f
+  gfortran:f77: scipy/interpolate/fitpack/fpinst.f
+  gfortran:f77: scipy/interpolate/fitpack/pogrid.f
+  gfortran:f77: scipy/interpolate/fitpack/parder.f
+  gfortran:f77: scipy/interpolate/fitpack/percur.f
+  gfortran:f77: scipy/interpolate/fitpack/fpfrno.f
+  scipy/interpolate/fitpack/fpfrno.f:42:0:
+  
+         right(k) = count
+  
+  Warning: 'k' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fprppo.f
+  scipy/interpolate/fitpack/fprppo.f:12:0:
+  
+         integer i,iopt,ii,j,k,l,nu4,nvv
+  
+  Warning: 'j' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpcyt1.f
+  gfortran:f77: scipy/interpolate/fitpack/regrid.f
+  gfortran:f77: scipy/interpolate/fitpack/curfit.f
+  gfortran:f77: scipy/interpolate/fitpack/fppara.f
+  scipy/interpolate/fitpack/fppara.f:202:35:
+  
+           if(fpold-fp.gt.acc) npl1 = rn*fpms/(fpold-fp)
+                                     1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fppara.f:201:0:
+  
+           rn = nplus
+  
+  Warning: 'nplus' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppara.f:242:0:
+  
+             if(n.eq.nmax) go to 10
+  
+  Warning: 'nmax' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppara.f:12:0:
+  
+         real*8 acc,con1,con4,con9,cos,fac,fpart,fpms,fpold,fp0,f1,f2,f3,
+  
+  Warning: 'fpold' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppara.f:279:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppara.f:12:0:
+  
+         real*8 acc,con1,con4,con9,cos,fac,fpart,fpms,fpold,fp0,f1,f2,f3,
+  
+  Warning: 'fp0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppara.f:378:0:
+  
+           if((f1-f2).gt.acc) go to 345
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/splint.f
+  gfortran:f77: scipy/interpolate/fitpack/fpader.f
+  gfortran:f77: scipy/interpolate/fitpack/fprati.f
+  gfortran:f77: scipy/interpolate/fitpack/fpgrpa.f
+  gfortran:f77: scipy/interpolate/fitpack/splev.f
+  gfortran:f77: scipy/interpolate/fitpack/parcur.f
+  gfortran:f77: scipy/interpolate/fitpack/cualde.f
+  gfortran:f77: scipy/interpolate/fitpack/fpopdi.f
+  gfortran:f77: scipy/interpolate/fitpack/fpgrre.f
+  scipy/interpolate/fitpack/fpgrre.f:199:0:
+  
+             h(j) = by(n1,j)*pinv
+  
+  Warning: 'pinv' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpsysy.f
+  gfortran:f77: scipy/interpolate/fitpack/fpgrdi.f
+  scipy/interpolate/fitpack/fpgrdi.f:16:0:
+  
+         real*8 arg,co,dz1,dz2,dz3,fac,fac0,pinv,piv,si,term,one,three,half
+  
+  Warning: 'pinv' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/concon.f
+  gfortran:f77: scipy/interpolate/fitpack/fpcurf.f
+  scipy/interpolate/fitpack/fpcurf.f:186:35:
+  
+           if(fpold-fp.gt.acc) npl1 = rn*fpms/(fpold-fp)
+                                     1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fpcurf.f:185:0:
+  
+           rn = nplus
+  
+  Warning: 'nplus' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcurf.f:219:0:
+  
+             if(n.eq.nmax) go to 10
+  
+  Warning: 'nmax' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcurf.f:12:0:
+  
+         real*8 acc,con1,con4,con9,cos,half,fpart,fpms,fpold,fp0,f1,f2,f3,
+  
+  Warning: 'fpold' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcurf.f:256:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcurf.f:12:0:
+  
+         real*8 acc,con1,con4,con9,cos,half,fpart,fpms,fpold,fp0,f1,f2,f3,
+  
+  Warning: 'fp0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcurf.f:335:0:
+  
+           if((f1-f2).gt.acc) go to 345
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/pardeu.f
+  gfortran:f77: scipy/interpolate/fitpack/fpbisp.f
+  gfortran:f77: scipy/interpolate/fitpack/fptrnp.f
+  scipy/interpolate/fitpack/fptrnp.f:53:0:
+  
+             h(j) = b(n1,j)*pinv
+  
+  Warning: 'pinv' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/profil.f
+  gfortran:f77: scipy/interpolate/fitpack/evapol.f
+  gfortran:f77: scipy/interpolate/fitpack/bispev.f
+  gfortran:f77: scipy/interpolate/fitpack/fpched.f
+  gfortran:f77: scipy/interpolate/fitpack/fprota.f
+  gfortran:f77: scipy/interpolate/fitpack/fporde.f
+  gfortran:f77: scipy/interpolate/fitpack/fpseno.f
+  gfortran:f77: scipy/interpolate/fitpack/parsur.f
+  gfortran:f77: scipy/interpolate/fitpack/fpcosp.f
+  gfortran:f77: scipy/interpolate/fitpack/fpregr.f
+  scipy/interpolate/fitpack/fpregr.f:246:33:
+  
+           if(reducx.gt.acc) npl1 = rn*fpms/reducx
+                                   1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fpregr.f:253:33:
+  
+           if(reducy.gt.acc) npl1 = rn*fpms/reducy
+                                   1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fpregr.f:310:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpregr.f:282:0:
+  
+             if(ny.eq.nye) go to 250
+  
+  Warning: 'nye' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpregr.f:269:0:
+  
+             if(nx.eq.nxe) go to 250
+  
+  Warning: 'nxe' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpregr.f:225:0:
+  
+           if(nx.eq.nmaxx .and. ny.eq.nmaxy) go to 430
+  
+  Warning: 'nmaxy' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpregr.f:225:0: Warning: 'nmaxx' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpregr.f:341:0:
+  
+           if((f1-f2).gt.acc) go to 330
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/dblint.f
+  gfortran:f77: scipy/interpolate/fitpack/fpcons.f
+  scipy/interpolate/fitpack/fpcons.f:224:35:
+  
+           if(fpold-fp.gt.acc) npl1 = rn*fpms/(fpold-fp)
+                                     1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fpcons.f:223:0:
+  
+           rn = nplus
+  
+  Warning: 'nplus' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcons.f:264:0:
+  
+             if(n.eq.nmax) go to 25
+  
+  Warning: 'nmax' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcons.f:383:0:
+  
+             if(u(it).lt.t(l) .or. l.gt.nk1) go to 310
+  
+  Warning: 'nk1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcons.f:81:0:
+  
+           t(i) = u(j)
+  
+  Warning: 'mm' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcons.f:12:0:
+  
+         real*8 acc,con1,con4,con9,cos,fac,fpart,fpms,fpold,fp0,f1,f2,f3,
+  
+  Warning: 'fpold' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcons.f:301:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcons.f:12:0:
+  
+         real*8 acc,con1,con4,con9,cos,fac,fpart,fpms,fpold,fp0,f1,f2,f3,
+  
+  Warning: 'fp0' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpcons.f:418:0:
+  
+           if((f1-f2).gt.acc) go to 345
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpgivs.f
+  gfortran:f77: scipy/interpolate/fitpack/clocur.f
+  gfortran:f77: scipy/interpolate/fitpack/fpcuro.f
+  gfortran:f77: scipy/interpolate/fitpack/fppogr.f
+  scipy/interpolate/fitpack/fppogr.f:286:33:
+  
+           if(reducu.gt.acc) npl1 = rn*fpms/reducu
+                                   1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fppogr.f:293:33:
+  
+           if(reducv.gt.acc) npl1 = rn*fpms/reducv
+                                   1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/interpolate/fitpack/fppogr.f:353:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppogr.f:385:0:
+  
+           if((f1-f2).gt.acc) go to 330
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppogr.f:260:0:
+  
+           if(nu.eq.numax .and. nv.eq.nvmax) go to 430
+  
+  Warning: 'nvmax' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppogr.f:315:0:
+  
+    230    if(nv.eq.nve) go to 210
+  
+  Warning: 'nve' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppogr.f:260:0:
+  
+           if(nu.eq.numax .and. nv.eq.nvmax) go to 430
+  
+  Warning: 'numax' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppogr.f:312:0:
+  
+             if(nu.eq.nue) go to 270
+  
+  Warning: 'nue' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/sphere.f
+  gfortran:f77: scipy/interpolate/fitpack/surfit.f
+  gfortran:f77: scipy/interpolate/fitpack/fpadno.f
+  gfortran:f77: scipy/interpolate/fitpack/spgrid.f
+  gfortran:f77: scipy/interpolate/fitpack/fptrpe.f
+  scipy/interpolate/fitpack/fptrpe.f:64:0:
+  
+             h(j) = b(n1,j)*pinv
+  
+  Warning: 'pinv' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpsphe.f
+  scipy/interpolate/fitpack/fpsphe.f:519:0:
+  
+         if(ntt.le.4) iband4 = ncof
+  
+  Warning: 'ntt' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsphe.f:614:0:
+  
+                  if(il.ne.3 .and. il.ne.nt4) go to 750
+  
+  Warning: 'nt4' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsphe.f:23:0:
+  
+        * l3,l4,ncof,ncoff,npp,np4,nreg,nrint,nrr,nr1,ntt,nt4,nt6,num,
+  
+  Warning: 'np4' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsphe.f:746:0:
+  
+    925  ier = lwest
+  
+  Warning: 'lwest' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsphe.f:21:0:
+  
+         integer i,iband,iband1,iband3,iband4,ich1,ich3,ii,ij,il,in,irot,
+  
+  Warning: 'iband1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsphe.f:510:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fpsphe.f:730:0:
+  
+           if((f1-f2).gt.acc) go to 905
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/fpcoco.f
+  gfortran:f77: scipy/interpolate/fitpack/bispeu.f
+  gfortran:f77: scipy/interpolate/fitpack/fpgrsp.f
+  scipy/interpolate/fitpack/fpgrsp.f:17:0:
+  
+         real*8 arg,co,dr01,dr02,dr03,dr11,dr12,dr13,fac,fac0,fac1,pinv,piv
+  
+  Warning: 'pinv' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/polar.f
+  gfortran:f77: scipy/interpolate/fitpack/cocosp.f
+  gfortran:f77: scipy/interpolate/fitpack/fprank.f
+  gfortran:f77: scipy/interpolate/fitpack/fppocu.f
+  gfortran:f77: scipy/interpolate/fitpack/fpchec.f
+  gfortran:f77: scipy/interpolate/fitpack/spalde.f
+  gfortran:f77: scipy/interpolate/fitpack/surev.f
+  gfortran:f77: scipy/interpolate/fitpack/fppola.f
+  scipy/interpolate/fitpack/fppola.f:24:0:
+  
+        * l3,l4,ncof,ncoff,nvv,nv4,nreg,nrint,nrr,nr1,nuu,nu4,num,num1,
+  
+  Warning: 'nv4' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppola.f:680:0:
+  
+                  if(il.eq.nu4 .and. iopt3.ne.0) go to 760
+  
+  Warning: 'nu4' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppola.f:821:0:
+  
+    925  ier = lwest
+  
+  Warning: 'lwest' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppola.f:25:0:
+  
+        * numin,nvmin,rank,iband1
+  
+  Warning: 'iband1' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppola.f:565:0:
+  
+         f3 = fpms
+  
+  Warning: 'fpms' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  scipy/interpolate/fitpack/fppola.f:805:0:
+  
+           if((f1-f2).gt.acc) go to 905
+  
+  Warning: 'acc' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  gfortran:f77: scipy/interpolate/fitpack/concur.f
+  gfortran:f77: scipy/interpolate/fitpack/fourco.f
+  gfortran:f77: scipy/interpolate/fitpack/fpadpo.f
+  gfortran:f77: scipy/interpolate/fitpack/splder.f
+  gfortran:f77: scipy/interpolate/fitpack/fpsuev.f
+  gfortran:f77: scipy/interpolate/fitpack/sproot.f
+  gfortran:f77: scipy/interpolate/fitpack/fpbspl.f
+  ar: adding 50 object files to build/temp.linux-x86_64-3.6/libfitpack.a
+  ar: adding 35 object files to build/temp.linux-x86_64-3.6/libfitpack.a
+  building 'fwrappers' library
+  compiling Fortran sources
+  Fortran f77 compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran f90 compiler: /usr/bin/gfortran -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran fix compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  creating build/temp.linux-x86_64-3.6/scipy/linalg
+  creating build/temp.linux-x86_64-3.6/tmp
+  creating build/temp.linux-x86_64-3.6/tmp/pip-install-9zdxa49e
+  creating build/temp.linux-x86_64-3.6/tmp/pip-install-9zdxa49e/scipy
+  creating build/temp.linux-x86_64-3.6/tmp/pip-install-9zdxa49e/scipy/scipy
+  creating build/temp.linux-x86_64-3.6/tmp/pip-install-9zdxa49e/scipy/scipy/_build_utils
+  creating build/temp.linux-x86_64-3.6/tmp/pip-install-9zdxa49e/scipy/scipy/_build_utils/src
+  compile options: '-I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -I/tmp/pip-build-env-s2jabtiu/overlay/include/python3.6m -I/usr/local/include/python3.6m -I/usr/local/include/python3.6m -I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c'
+  gfortran:f77: scipy/linalg/_blas_subroutine_wrappers.f
+  gfortran:f77: scipy/linalg/_lapack_subroutine_wrappers.f
+  gfortran:f77: /tmp/pip-install-9zdxa49e/scipy/scipy/_build_utils/src/wrap_dummy_g77_abi.f
+  ar: adding 3 object files to build/temp.linux-x86_64-3.6/libfwrappers.a
+  building 'odrpack' library
+  compiling Fortran sources
+  Fortran f77 compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran f90 compiler: /usr/bin/gfortran -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran fix compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  creating build/temp.linux-x86_64-3.6/scipy/odr
+  creating build/temp.linux-x86_64-3.6/scipy/odr/odrpack
+  compile options: '-I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c'
+  gfortran:f77: scipy/odr/odrpack/d_odr.f
+  scipy/odr/odrpack/d_odr.f:1014:13:
+  
+         NETA = MAX(TWO,P5-LOG10(ETA))
+               1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/odr/odrpack/d_odr.f:2955:13:
+  
+         NTOL = MAX(ONE,P5-LOG10(TOL))
+               1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  scipy/odr/odrpack/d_odr.f:6032:16:
+  
+               J = WORK(WRK3+I) - 1
+                  1
+  Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+  gfortran:f77: scipy/odr/odrpack/d_mprec.f
+  gfortran:f77: scipy/odr/odrpack/dlunoc.f
+  gfortran:f77: scipy/odr/odrpack/d_lpk.f
+  ar: adding 4 object files to build/temp.linux-x86_64-3.6/libodrpack.a
+  building 'minpack' library
+  compiling Fortran sources
+  Fortran f77 compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran f90 compiler: /usr/bin/gfortran -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  Fortran fix compiler: /usr/bin/gfortran -Wall -g -ffixed-form -fno-second-underscore -Wall -g -fno-second-underscore -fPIC -O3 -funroll-loops
+  creating build/temp.linux-x86_64-3.6/scipy/optimize
+  creating build/temp.linux-x86_64-3.6/scipy/optimize/minpack
+  compile options: '-I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c'
+  gfortran:f77: scipy/optimize/minpack/r1mpyq.f
+  gfortran:f77: scipy/optimize/minpack/hybrj.f
+  gfortran:f77: scipy/optimize/minpack/lmder1.f
+  gfortran:f77: scipy/optimize/minpack/lmstr.f
+  gfortran:f77: scipy/optimize/minpack/dpmpar.f
+  gfortran:f77: scipy/optimize/minpack/chkder.f
+  gfortran:f77: scipy/optimize/minpack/dogleg.f
+  gfortran:f77: scipy/optimize/minpack/hybrd.f
+  gfortran:f77: scipy/optimize/minpack/lmstr1.f
+  gfortran:f77: scipy/optimize/minpack/qform.f
+  gfortran:f77: scipy/optimize/minpack/r1updt.f
+  gfortran:f77: scipy/optimize/minpack/qrfac.f
+  gfortran:f77: scipy/optimize/minpack/fdjac2.f
+  gfortran:f77: scipy/optimize/minpack/hybrd1.f
+  gfortran:f77: scipy/optimize/minpack/enorm.f
+  gfortran:f77: scipy/optimize/minpack/fdjac1.f
+  gfortran:f77: scipy/optimize/minpack/hybrj1.f
+  gfortran:f77: scipy/optimize/minpack/qrsolv.f
+  gfortran:f77: scipy/optimize/minpack/lmder.f
+  gfortran:f77: scipy/optimize/minpack/lmpar.f
+  gfortran:f77: scipy/optimize/minpack/lmdif.f
+  gfortran:f77: scipy/optimize/minpack/lmdif1.f
+  gfortran:f77: scipy/optimize/minpack/rwupdt.f
+  ar: adding 23 object files to build/temp.linux-x86_64-3.6/libminpack.a
+  building 'rectangular_lsap' library
+  compiling C++ sources
+  C compiler: g++ -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -DTHREAD_STACK_SIZE=0x100000 -fPIC
+  
+  creating build/temp.linux-x86_64-3.6/scipy/optimize/rectangular_lsap
+  compile options: '-I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c'
+  g++: scipy/optimize/rectangular_lsap/rectangular_lsap.cpp
+  Running from scipy source directory.
+  /tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/distutils/system_info.py:664: UserWarning: Specified path /usr/include/python3.6m is invalid.
+    return self.get_paths(self.section, key)
+  scipy/optimize/rectangular_lsap/rectangular_lsap.cpp:117:43: error: 'int64_t' has not been declared
+   solve(int nr, int nc, double* input_cost, int64_t* output_col4row)
+                                             ^~~~~~~
+  scipy/optimize/rectangular_lsap/rectangular_lsap.cpp:186:41: error: 'int64_t' has not been declared
+                                           int64_t* col4row)
+                                           ^~~~~~~
+  scipy/optimize/rectangular_lsap/rectangular_lsap.cpp:117:43: error: 'int64_t' has not been declared
+   solve(int nr, int nc, double* input_cost, int64_t* output_col4row)
+                                             ^~~~~~~
+  scipy/optimize/rectangular_lsap/rectangular_lsap.cpp:186:41: error: 'int64_t' has not been declared
+                                           int64_t* col4row)
+                                           ^~~~~~~
+  error: Command "g++ -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -DTHREAD_STACK_SIZE=0x100000 -fPIC -I/tmp/pip-build-env-s2jabtiu/overlay/lib/python3.6/site-packages/numpy/core/include -c scipy/optimize/rectangular_lsap/rectangular_lsap.cpp -o build/temp.linux-x86_64-3.6/scipy/optimize/rectangular_lsap/rectangular_lsap.o -MMD -MF build/temp.linux-x86_64-3.6/scipy/optimize/rectangular_lsap/rectangular_lsap.o.d" failed with exit status 1
+  ----------------------------------------
+[0m  Building wheel for matplotlib (setup.py): started
+[91m  ERROR: Failed building wheel for scipy
+[0m  Building wheel for matplotlib (setup.py): still running...
+  Building wheel for matplotlib (setup.py): finished with status 'done'
+  Created wheel for matplotlib: filename=matplotlib-3.2.0-cp36-cp36m-linux_x86_64.whl size=12184697 sha256=b0ba3cf075913ad6cd97b1c2d78322631fb90964365848abd40356153c4ce048
+  Stored in directory: /tmp/pip-ephem-wheel-cache-2uym59yl/wheels/06/cc/69/0493d7a3a3131508cc092b6f6b4754e5138ecb781bd40ca8d2
+  Building wheel for scikit-learn (setup.py): started
+  Building wheel for scikit-learn (setup.py): finished with status 'error'
+[91m  ERROR: Command errored out with exit status 1:
+   command: /usr/local/bin/python -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-9zdxa49e/scikit-learn/setup.py'"'"'; __file__='"'"'/tmp/pip-install-9zdxa49e/scikit-learn/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' bdist_wheel -d /tmp/pip-wheel-mn1yelta
+       cwd: /tmp/pip-install-9zdxa49e/scikit-learn/
+  Complete output (22 lines):
+  Partial import of sklearn during the build process.
+  Traceback (most recent call last):
+    File "/tmp/pip-install-9zdxa49e/scikit-learn/setup.py", line 195, in check_package_status
+      module = importlib.import_module(package)
+    File "/usr/local/lib/python3.6/importlib/__init__.py", line 126, in import_module
+      return _bootstrap._gcd_import(name[level:], package, level)
+    File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+    File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+    File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  ModuleNotFoundError: No module named 'numpy'
+  Traceback (most recent call last):
+    File "<string>", line 1, in <module>
+    File "/tmp/pip-install-9zdxa49e/scikit-learn/setup.py", line 303, in <module>
+      setup_package()
+    File "/tmp/pip-install-9zdxa49e/scikit-learn/setup.py", line 291, in setup_package
+      check_package_status('numpy', NUMPY_MIN_VERSION)
+    File "/tmp/pip-install-9zdxa49e/scikit-learn/setup.py", line 221, in check_package_status
+      .format(package, req_str, instructions))
+  ImportError: numpy is not installed.
+  scikit-learn requires numpy >= 1.11.0.
+  Installation instructions are available on the scikit-learn website: http://scikit-learn.org/stable/install.html
+  
+  ----------------------------------------
+[0m[91m  ERROR: Failed building wheel for scikit-learn
+[0m  Running setup.py clean for scikit-learn
+  Building wheel for pandas (PEP 517): started
+  Building wheel for pandas (PEP 517): still running...
+  Building wheel for pandas (PEP 517): still running...
+  Building wheel for pandas (PEP 517): still running...
+  Building wheel for pandas (PEP 517): still running...
+  Building wheel for pandas (PEP 517): still running...
+  Building wheel for pandas (PEP 517): still running...
+  Building wheel for pandas (PEP 517): still running...
+  Building wheel for pandas (PEP 517): still running...
+  Building wheel for pandas (PEP 517): still running...
+  Building wheel for pandas (PEP 517): finished with status 'done'
+  Created wheel for pandas: filename=pandas-1.0.1-cp36-cp36m-linux_x86_64.whl size=33622205 sha256=1a02b55cd636d4c2ccfdd829a7e001ca47489fb8f1d326145e0f75532ad99b86
+  Stored in directory: /tmp/pip-ephem-wheel-cache-2uym59yl/wheels/3b/e4/14/0e208666439c526333e2062b541ed907e686b27625d12c4346
+  Building wheel for nltk (setup.py): started
+  Building wheel for nltk (setup.py): finished with status 'done'
+  Created wheel for nltk: filename=nltk-3.4.5-py3-none-any.whl size=1449905 sha256=cfa82f2466a822bde4b26112427374df95ed3544b0965da8adfddb3323a52f46
+  Stored in directory: /tmp/pip-ephem-wheel-cache-2uym59yl/wheels/e3/c9/b0/ed26a73ef75a53145820825afa8e2d2c9b30fe9f6c10cd3202
+  Building wheel for kiwisolver (setup.py): started
+  Building wheel for kiwisolver (setup.py): finished with status 'done'
+  Created wheel for kiwisolver: filename=kiwisolver-1.1.0-cp36-cp36m-linux_x86_64.whl size=1467983 sha256=bc89e0d691b0c649f8e1c8cc0f66e1fe031553b647ada3cdcba2eb754ae3a4d5
+  Stored in directory: /tmp/pip-ephem-wheel-cache-2uym59yl/wheels/60/f6/85/a8b74867c7215481350c351dfe89ce9ee50ac603a37e4e10fa
+  Building wheel for numpy (PEP 517): started
+  Building wheel for numpy (PEP 517): still running...
+  Building wheel for numpy (PEP 517): still running...
+  Building wheel for numpy (PEP 517): finished with status 'done'
+  Created wheel for numpy: filename=numpy-1.18.1-cp36-cp36m-linux_x86_64.whl size=12912577 sha256=ad628fe0140ec4fd02e91877d528a59c9a4eaf0228336b862dd0975347082251
+  Stored in directory: /tmp/pip-ephem-wheel-cache-2uym59yl/wheels/92/18/20/83339b2576b5911519a6b616d8b4a6df8b14358ba5cd612a0b
+  Building wheel for MarkupSafe (setup.py): started
+  Building wheel for MarkupSafe (setup.py): finished with status 'done'
+  Created wheel for MarkupSafe: filename=MarkupSafe-1.1.1-cp36-cp36m-linux_x86_64.whl size=33478 sha256=ef135e309d16b9e4cf8d38774241b42af8252e8387feb6e6f2ffb01f9daa55b5
+  Stored in directory: /tmp/pip-ephem-wheel-cache-2uym59yl/wheels/ca/85/2f/4c3a8ca6fb5eec7b43ec1e5666c7274dcdb86d6c32231aaa9d
+Successfully built matplotlib pandas nltk kiwisolver numpy MarkupSafe
+Failed to build scipy scikit-learn
+[91mERROR: Could not build wheels for scipy which use PEP 517 and cannot be installed directly
+[0m

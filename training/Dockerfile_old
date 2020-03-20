@@ -1,0 +1,51 @@
+FROM python:3.6-alpine3.10
+
+ENV PACKAGES="\
+    libgcc \
+    libstdc++ \
+    tcl \
+    "
+
+ENV TOOLS="\
+    py-pip \
+    "
+
+ENV PYTHON_PACKAGES="\
+    flask-restful \
+    tqdm \
+    matplotlib \
+    scikit-learn \
+    pandas \
+    nltk \
+    " 
+
+RUN apk add --no-cache --virtual build-dependencies $PACKAGES \
+    && apk add --virtual build-runtime \
+    build-base python3-dev openblas-dev freetype-dev pkgconfig gfortran \
+    && ln -s /usr/include/locale.h /usr/include/xlocale.h \
+    && apk update \
+    && apk add make automake gcc g++ subversion python3-dev \
+    && apk add --update $TOOLS \
+    && pip3 install --upgrade pip setuptools \
+    && rm -r /root/.cache \
+    && pip3 install --no-cache-dir $PYTHON_PACKAGES 
+
+#RUN apk add --no-cache python3-dev libstdc++
+#RUN apk add --no-cache g++
+#RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+#RUN pip3 install numpy
+#RUN pip3 install pandas
+#RUN python -V
+#RUN pip3 install flask-restful
+#RUN pip3 install tqdm
+#RUN pip3 install pandas
+#RUN pip3 install matplotlib
+#RUN pip3 install seaborn
+#RUN pip3 install sklearn
+#RUN pip3 install xlrd
+#RUN pip3 install pickle-mixin
+#RUN pip3 install werkzeug
+WORKDIR /usr/src/app
+COPY . .
+EXPOSE 5000
+CMD [ "python3", "main.py" ]
