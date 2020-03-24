@@ -12,4 +12,4 @@ def get_folders_from_path(_path):
     return list_folders
 
 def file_exists(_file):
-    return os.path.exists(_file)
+    return os.path.exists(_file) 

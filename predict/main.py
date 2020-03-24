@@ -3,17 +3,23 @@ from flask import Flask
 from flask_restful import reqparse, abort, Api, Resource
 from route import get_routes
 from sys_lib.config_maneger import ConfigManager
+import sys_lib.utils as utils
 from sys_lib.context import Context
-from configs.endpoints import endpoints
+from configs.api_config import api_config
 
 app = Flask(__name__)
 api = Api(app)
 logging.basicConfig(format='%(asctime)s - %(levelname)s:%(message)s', level=logging.DEBUG)
-config = ConfigManager(endpoints)
+config = ConfigManager(api_config)
 
 parser = reqparse.RequestParser()
 
-ctx = Context(Resource, parser, config, logging)
+ctx = Context(
+    Resource,
+    parser,
+    config,
+    utils,
+    logging)
 
 ##
 ## Actually setup the Api resource routing here

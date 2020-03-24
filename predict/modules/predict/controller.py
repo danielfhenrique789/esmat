@@ -1,7 +1,7 @@
 import requests
 from flask_restful import abort 
 import werkzeug
-from models.predict import Predict
+from modules.predict.models.predict import Predict
 
 def get_class(context):
 

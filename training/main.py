@@ -14,7 +14,12 @@ config = ConfigManager(api_config)
 
 parser = reqparse.RequestParser()
 
-ctx = Context(Resource, parser, config, utils, logging)
+ctx = Context(
+    Resource,
+    parser,
+    config,
+    utils,
+    logging)
 
 ##
 ## Actually setup the Api resource routing here
