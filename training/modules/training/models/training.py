@@ -20,8 +20,9 @@ sns.set()
 
 class Training:
 
-    def __init__(self, context):
+    def __init__(self, context, config):
         self.logging = context.logging
+        self.training_config = config
 
     def apply(self):
         
@@ -30,11 +31,10 @@ class Training:
         df_esmat_arts, df_esmat_goepik, dict_df_sag_jandira = self.getData()   
 
         # Remove files from tmp folder
-        temp_folder = "tmp/"
         self.removeFiles([
-            temp_folder+"compilado_ARTS.xlsx",
-            temp_folder+"eSMAT_Goepik.xlsx",
-            temp_folder+"SAG_Jandira.xlsx"])     
+            self.training_config.compilado,
+            self.training_config.esmat,
+            self.training_config.sag])     
 
         ### TRANSFORMING DATA - ESMAT AND ART'S
         #cleaning data
